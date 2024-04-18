@@ -214,9 +214,16 @@ function LoadRecords()
     //
     generateDeleteTable($table, $PK, $arrayTitles, $arrayData);
 }
-function getSelectInput($resultsSet,$recordText, $recordValue,  $name, $selectedValue)
+function dummyExample()
 {
-    $select = "<select name='$name'>";
+    $sql = "SELECT * FROM Team";
+    $rs = db->query($conn, $sql);
+    $selectHtml = getSelectInput($rs, "teamName", "teamID", "teamID", "1");
+    echo $selectHtml;
+}
+function getSelectInput($resultsSet,$recordText, $recordValue,  $selectName, $selectedValue)
+{
+    $select = "<select name='$selectName'>";
     while ($row = $resultsSet->fetch_assoc()) {
         $value = $row[$recordValue];
         $text = $row[$recordText];
