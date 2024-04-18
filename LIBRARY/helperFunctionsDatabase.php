@@ -221,7 +221,10 @@ function dummyExample()
     $selectHtml = getSelectInput($rs, "teamName", "teamID", "teamID", "1");
     echo $selectHtml;
 }
-function getSelectInput($resultsSet,$recordText, $recordValue,  $selectName, $selectedValue)
+/**
+ * @param $connection
+ */
+function getSelectInput($resultsSet, $recordText, $recordValue,  $selectName, $selectedValue)
 {
     $select = "<select name='$selectName'>";
     while ($row = $resultsSet->fetch_assoc()) {
