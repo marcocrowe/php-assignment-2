@@ -1,7 +1,7 @@
 <?php
-require_once "config/config.php";
-require_once "LIBRARY/helperFunctionsTables.php";
-require_once "LIBRARY/helperFunctionsDatabase.php";
+require_once "library/config.php";
+require_once "library/helperFunctionsTables.php";
+require_once "library/helperFunctionsDatabase.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@ require_once "LIBRARY/helperFunctionsDatabase.php";
 <head>
     <title>Data Driven Applications 2; Assignment 2</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <link href="<?php echo __CSS; ?>" rel="stylesheet" type="text/css" />
+    <link href="css/my-style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 </head>
 

@@ -4,32 +4,22 @@
 
 /**
  * Run a query and return the result set
- * @param MySQLi $connection
- 
+ * @param MySQLi $connection The connection to the database
+ * @param string $sql The SQL query to run
+ * @return mysqli_result|bool The result set or false if the query failed
  */
-function getTableData(MySQli $connection, string $sql)
+function getTableData(MySQli $connection, string $sql): mysqli_result|bool
 {
     return $connection->query($sql);
 }
 
 function checkResultSet($rs)
 {
-    if ($rs === false) {
-        if (__DEBUG == 1) {
-            echo 'Wrong SQL: ' . $sql . ' Error: ' . $conn->error;
-            exit('<p class="warning">PHP script terminated');
-        } else {
-            header("Location:" . __USER_ERROR_PAGE);
-        }
-    } else {
-        return $rs->fetch_all(MYSQLI_ASSOC);
-    }
+    return $rs->fetch_all(MYSQLI_ASSOC);
 }
 
 function generateTable($tableName, $titlesResultSet, $dataResultSet)
 {
-    //use resultsets to generate HTML tables
-
     echo "<table>";
 
     //first - create the table caption and headings
@@ -85,6 +75,7 @@ function generateDeleteTable($tableName, $primaryKey, $titlesResultSet, $dataRes
     }
     echo "</table>";
 }
+
 function echoButton2Template($id)
 {
     echo '<td>';

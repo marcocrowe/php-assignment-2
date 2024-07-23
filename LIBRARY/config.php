@@ -1,21 +1,10 @@
 <?php
-
-/**
- * Configuration settings for this web application
- * These are defined as global constants which will be available in ALL SCRIPTS, CLASSES and FUNCTIONS
- */
-
-
- 
-define('__CSS', 'css/my-style.css'); // reference to CSS
-define('__DEBUG', 0); // constants are defined using the define keyword 1=true, 0=false
-define('__LOGIN_ATTEMPT_MAX', 3); // limit the number of login attempts
-define('__USER_ERROR_PAGE', 'error.php'); // script to redirect to in case of error
-
 /**
  * Transform a configuration array to a String for writing to a file
+ * @param array $config The configuration array
+ * @return string The configuration text
  */
-function configToString($config): string
+function configToString(array $config): string
 {
     $text = '';
     foreach ($config as $key => $value)
@@ -23,12 +12,29 @@ function configToString($config): string
 
     return $text;
 }
+
+/**
+ * Connect to the database with the connection details from the config file
+ * @param string $configFilePath The path to the configuration file. Default is 'config.ini'
+ * @return mysqli The database connection
+ */
+function connectWithConfig(string $configFilePath = 'config.ini'): mysqli
+{
+    $ini_array = createConfigFileIfNotExists($configFilePath);
+    $host = $ini_array['database.params.host'];
+    $username = $ini_array['database.params.username'];
+    $password = $ini_array['database.params.password'];
+    $db_name = $ini_array['database.params.dbname'];
+
+    return new mysqli($host, $username, $password, $db_name);
+}
+
 /**
  * Create a configuration file if it does not exist with default values
  * @param string $config_file_path The path to the configuration file. Default is 'config.ini'
  * @return array The configuration data
  */
-function createConfigFileIfNotExists($config_file_path = 'config.ini'): array
+function createConfigFileIfNotExists(string $config_file_path = 'config.ini'): array
 {
     if (!file_exists($config_file_path)) {
 
