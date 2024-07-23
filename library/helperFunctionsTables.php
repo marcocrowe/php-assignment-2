@@ -69,7 +69,7 @@ function generateDeleteTable($tableName, $primaryKey, $titlesResultSet, $dataRes
         //New Button Entered for editing
         $id = $row[$primaryKey];  //get the current PK value
         $buttonText2 = "Edit";
-        include 'FORMS/buttonWithText3.php';
+        include 'forms/buttonWithText3.php';
         echo '</td>';
         echo '</tr>';
     }
@@ -81,7 +81,7 @@ function echoButton2Template($id)
     echo '<td>';
     //set the button values and display the button to the form:
     $buttonText = "Delete";
-    include 'FORMS/buttonWithText2.php';
+    include 'forms/buttonWithText2.php';
     echo '</td>';
 }
 
